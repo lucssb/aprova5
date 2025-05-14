@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprova5 - Materiais de Estudo para Concursos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* RESET BÁSICO E ESTILOS GLOBAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; text-align: center; margin-bottom: 40px; }
+        h3 { font-size: 1.5em; }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff7f50; /* Coral - cor de destaque */
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e67347;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #005A9C; /* Azul mais forte para o logo */
+        }
+        .logo .highlight {
+            color: #ff7f50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff7f50;
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            background: linear-gradient(rgba(0, 90, 156, 0.85), rgba(0, 90, 156, 0.85)), url('https://via.placeholder.com/1920x1080.png?text=Estudo+para+Concursos') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        #hero h1 {
+            color: #fff;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #hero p {
+            font-size: 1.2em;
+            color: #f0f0f0;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* MATERIAIS SECTION */
+        #materiais {
+            background-color: #fff;
+        }
+        .materiais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .material-item {
+            background-color: #f8f9fa;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .material-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .material-item i {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .material-item h3 {
+            color: #005A9C;
+            margin-bottom: 10px;
+        }
+
+        /* NOVIDADE - LEIS INTERATIVAS */
+        #novidade-leis {
+            background-color: #e9ecef; /* Um pouco diferente para destacar */
+        }
+        .lei-interativa-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto; /* Centralizar */
+        }
+        .lei-interativa-container h3.section-title { /* Nome da classe do exemplo */
+            font-size: 1.4em;
+            color: #555;
+            margin-top: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        .lei-interativa-container p, .lei-interativa-container li {
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+        .interactive-word-wrapper {
+            display: inline-block;
+            margin: 0 2px;
+        }
+        select.interactive-select {
+            padding: 5px 8px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            font-family: inherit;
+            font-size: 0.95em;
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        select.correct {
+            color: #28a745; /* Verde sucesso */
+            border-color: #28a745;
+            font-weight: bold;
+            background-color: #e9f7ef;
+        }
+        select.incorrect {
+            color: #dc3545; /* Vermelho perigo */
+            border-color: #dc3545;
+            font-weight: bold;
+            background-color: #fce8eA;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.85em;
+            display: block;
+            margin-top: 3px;
+            font-style: italic;
+        }
+        .lei-interativa-intro {
+            font-size: 1.1em;
+            margin-bottom: 30px !important; /* Para sobrescrever o p padrão */
+            text-align: center;
+        }
+         /* Adicionando estilos que faltavam do exemplo original */
+        .lei-interativa-container h1 { /* Ajustado para o contexto da seção */
+            text-align: center;
+            font-size: 1.8em;
+            color: #005A9C;
+        }
+        .lei-interativa-container h2 { /* Ajustado para o contexto da seção */
+            font-size: 1.5em;
+            margin-top: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            text-align: left; /* Manter alinhamento original */
+        }
+        .question-box {
+            border: 1px solid #007bff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            background-color: #e7f3ff;
+        }
+        .gabarito-container {
+            margin-top: 10px;
+        }
+        /* FIM LEIS INTERATIVAS */
+
+        /* CTA SECTION */
+        #cta {
+            background-color: #005A9C;
+            color: #fff;
+            text-align: center;
+        }
+        #cta h2 {
+            color: #fff;
+        }
+        #cta p {
+            color: #f0f0f0;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        #cta .btn {
+            background-color: #ff7f50;
+            font-size: 1.1em;
+            padding: 15px 35px;
+        }
+        #cta .btn:hover {
+            background-color: #fff;
+            color: #ff7f50;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #2c3e50;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin-bottom: 0;
+            color: #ccc;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            #hero h1 { font-size: 2.8em; }
+            h2 { font-size: 1.8em; }
+
+            header .container {
+                flex-direction: column;
+            }
+            .logo { margin-bottom: 10px; }
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .materiais-grid {
+                grid-template-columns: 1fr;
+            }
+            .lei-interativa-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#hero" class="logo">Aprova<span class="highlight">5</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Início</a></li>
+                    <li><a href="#materiais">Materiais</a></li>
+                    <li><a href="#novidade-leis">Leis Interativas</a></li>
+                    <li><a href="#cta">Comece Já</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Conquiste sua Aprovação com a Aprova5!</h1>
+            <p>A plataforma completa com materiais de estudo otimizados para acelerar seu aprendizado e garantir sua vaga no concurso dos seus sonhos.</p>
+            <a href="#cta" class="btn">Quero ser Aprovado!</a>
+        </div>
+    </section>
+
+    <section id="materiais">
+        <div class="container">
+            <h2>Materiais Desenhados para sua Aprovação</h2>
+            <div class="materiais-grid">
+                <div class="material-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Resumos Estratégicos</h3>
+                    <p>Conteúdo direto ao ponto, focado no que realmente cai na prova.</p>
+                </div>
+                <div class="material-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Mapas Mentais</h3>
+                    <p>Visualize e conecte os temas mais complexos de forma simples.</p>
+                </div>
+                <div class="material-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Questões Comentadas</h3>
+                    <p>Pratique com milhares de questões e entenda cada resposta.</p>
+                </div>
+                <div class="material-item">
+                    <i class="fas fa-clone"></i>
+                    <h3>Flashcards</h3>
+                    <p>Memorize conceitos, leis e prazos de maneira eficiente.</p>
+                </div>
+                <div class="material-item">
+                    <i class="fas fa-headphones-alt"></i>
+                    <h3>Aulas em Áudio</h3>
+                    <p>Estude em qualquer lugar, otimizando seu tempo ao máximo.</p>
+                </div>
+                <div class="material-item">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Lei Seca Destacada</h3>
+                    <p>Foque nos artigos mais importantes e entenda a legislação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="novidade-leis">
+        <div class="container">
+            <h2><i class="fas fa-lightbulb"></i> Novidade Exclusiva: Leis Interativas!</h2>
+            <p class="lei-interativa-intro">Aprenda a legislação de forma ativa e dinâmica. Preencha as lacunas e teste seus conhecimentos em tempo real!</p>
+            
+            <div class="lei-interativa-container">
+                <h1>Dos Juizados Especiais Criminais</h1> <!-- Título do exemplo, adaptado -->
+                <h2>Disposições Gerais</h2>
+            
+                <p>Art. 60. O Juizado Especial Criminal, provido por juízes togados ou togados e leigos, tem competência para a conciliação, o julgamento e a execução das infrações penais de menor potencial ofensivo, respeitadas as regras de conexão e continência.</p>
+            
+                <p>Art. 61. Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a 
+                    <span class="interactive-word-wrapper">
+                        <select class="interactive-select" data-correct="2 (dois) anos">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <small class="error-message" style="display:none;">Opção incorreta</small>
+                    </span>, cumulada ou não com multa.
+                </p>
+            
+                <p>Art. 62. O processo perante o Juizado Especial orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, 
+                    <span class="interactive-word-wrapper">
+                        <select class="interactive-select" data-correct="economia processual">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <small class="error-message" style="display:none;">Opção incorreta</small>
+                    </span> e celeridade, objetivando, sempre que possível, a reparação dos danos sofridos pela vítima e a aplicação de pena 
+                    <span class="interactive-word-wrapper">
+                        <select class="interactive-select" data-correct="não privativa de liberdade">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <small class="error-message" style="display:none;">Opção incorreta</small>
+                    </span>.
+                </p>
+            
+                <h3 class="section-title">Seção I</h3>
+                <h2>Da Competência e dos Atos Processuais</h2>
+            
+                <p>Art. 64. Os atos processuais serão 
+                    <span class="interactive-word-wrapper">
+                        <select class="interactive-select" data-correct="públicos">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <small class="error-message" style="display:none;">Opção incorreta</small>
+                    </span> e poderão realizar-se em horário noturno e em qualquer dia da semana, conforme dispuserem as normas de organização judiciária.
+                </p>
+
+                <div class="question-box">
+                    <p><strong>Questão Exemplo:</strong> Com base no Art. 61, qual o prazo máximo da pena para considerar uma infração de menor potencial ofensivo?</p>
+                    <div class="gabarito-container">
+                        Resposta: 
+                        <span class="interactive-word-wrapper">
+                            <select class="interactive-select" data-correct="2 (dois) anos">
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <small class="error-message" style="display:none;">Opção incorreta</small>
+                        </span>
+                    </div>
+                </div>
+                
+                <p style="text-align:center; margin-top:20px; font-style:italic;">
+                    Isso é apenas uma demonstração. Em nossa plataforma, você encontrará leis completas neste formato interativo!
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container">
+            <h2>Pronto para Turbinar seus Estudos?</h2>
+            <p>Junte-se a milhares de estudantes que estão alcançando a aprovação com os materiais da Aprova5. Não perca mais tempo!</p>
+            <a href="#" class="btn">Entrar no grupo de WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Aprova5. Todos os direitos reservados.</p>
+            <p>Feito com <i class="fas fa-heart" style="color: #ff7f50;"></i> para futuros aprovados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para navegação suave e ativação de links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Remove active class de todos os links
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                // Adiciona active class ao link clicado
+                this.classList.add('active');
+            });
+        });
+
+        // Script para as Leis Interativas (o mesmo que você forneceu)
+        document.addEventListener('DOMContentLoaded', function() {
+            const distractors = {
+                "2 (dois) anos": "3 (três) anos",
+                "economia processual": "burocracia processual",
+                "não privativa de liberdade": "privativa de liberdade",
+                "públicos": "sigilosos",
+                "mandado": "edital", // Embora não usado no snippet acima, mantido por completude
+                "defensor público": "advogado particular" // Mesmo caso acima
+            };
+
+            const selects = document.querySelectorAll('.interactive-select');
+
+            selects.forEach(select => {
+                const correctAnswer = select.dataset.correct;
+                let incorrectAnswer = distractors[correctAnswer];
+
+                if (!incorrectAnswer) {
+                    // Fallback genérico se um distrator específico não for encontrado
+                    // Para "2 (dois) anos" na question-box, ele usará o distrator "3 (três) anos" se existir.
+                    // Se não, um genérico.
+                    incorrectAnswer = "Opção Incorreta"; 
+                }
+                
+                const option1 = document.createElement('option');
+                option1.value = ""; 
+                option1.textContent = "Selecione...";
+                option1.disabled = true;
+                option1.selected = true;
+
+                const optionCorrect = document.createElement('option');
+                optionCorrect.value = correctAnswer;
+                optionCorrect.textContent = correctAnswer;
+
+                const optionIncorrect = document.createElement('option');
+                optionIncorrect.value = incorrectAnswer;
+                optionIncorrect.textContent = incorrectAnswer;
+
+                select.appendChild(option1);
+
+                // Randomize order of correct and incorrect options
+                if (Math.random() < 0.5) {
+                    select.appendChild(optionCorrect);
+                    select.appendChild(optionIncorrect);
+                } else {
+                    select.appendChild(optionIncorrect);
+                    select.appendChild(optionCorrect);
+                }
+
+                select.addEventListener('change', function() {
+                    const selectedValue = this.value;
+                    const isCorrect = selectedValue === correctAnswer;
+                    const wrapper = this.closest('.interactive-word-wrapper');
+                    const errorMessageElement = wrapper.querySelector('.error-message');
+
+                    if (selectedValue === "") {
+                        this.classList.remove('correct', 'incorrect');
+                        if (errorMessageElement) errorMessageElement.style.display = 'none';
+                        return;
+                    }
+
+                    if (isCorrect) {
+                        this.classList.remove('incorrect');
+                        this.classList.add('correct');
+                        if (errorMessageElement) errorMessageElement.style.display = 'none';
+                    } else {
+                        this.classList.remove('correct');
+                        this.classList.add('incorrect');
+                        if (errorMessageElement) errorMessageElement.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
