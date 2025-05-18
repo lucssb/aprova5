@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Leis Interativas</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 30px;
+            text-align: justify;
+        }
+        .lei-container {
+            background: #eeeded;
+            border-radius: 7px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+            padding: 24px;
+            max-width: 950px;
+            margin: auto;
+            font-size: 1.15em;
+            line-height: 1.7;
+        }
+        .dropdown-lei {
+            font-size: 0.8em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: #0400f3;
+        }
+        .correta {
+            color: #218838;
+            font-weight: bold;
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        .incorreta {
+            color: #c82333;
+            font-weight: bold;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        p, ul {
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+
+
+        li, ul {
+            list-style-type: none;
+            margin-right: 5%; /* diminui a margem direita */
+        }
+}
+    </style>
+</head>
+<body>
+    <div class="lei-container" id="lei-content">
+        <!-- O texto será inserido aqui via JavaScript -->
+    </div>
+    <script>
+        // ---- Texto de exemplo (edite livremente!) ----
+        const textoOriginal = `
+        Lei [[fundamental#1]] do ensino [[fundamental#2]]. Outro [[fundamental#3]]
+        Pera, agora eu [[vou#4]]. Sem id o que [[fazer]]
+
+
+<p style="text-align:center;"><strong>PREÂMBULO</strong>
+
+<p>Nós, representantes do povo brasileiro, reunidos em Assembléia Nacional Constituinte para instituir um Estado Democrático, destinado a assegurar o exercício dos direitos sociais e individuais, a liberdade, a segurança, o bem-estar, o desenvolvimento, a igualdade e a justiça como valores supremos de uma sociedade fraterna, pluralista e sem preconceitos, fundada na harmonia social e comprometida, na ordem interna e internacional, com a solução pacífica das controvérsias, promulgamos, sob a proteção de Deus, a seguinte CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL.</p>
+
+<p style="text-align:center;"><strong>TÍTULO I</strong></p>
+<p style="text-align:center;"><strong>Dos Princípios Fundamentais</strong></p>
+
+<p><strong>Art. 1º</strong> A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios e do Distrito Federal, constitui-se em Estado Democrático de Direito e tem como fundamentos:</p>
+<ul>
+<li>I - a soberania;</li>
+<li>II - [[a cidadania;#1]]</li>
+<li>III - a dignidade da pessoa humana;</li>
+<li>IV - os valores sociais do trabalho e da livre iniciativa;</li>
+<li>V - o pluralismo político.</li>
+</ul>
+<p>Parágrafo único. Todo o poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição.</p>
+
+<p><strong>Art. 2º</strong> São Poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário.</p>
+
+<p><strong>Art. 3º</strong> Constituem objetivos fundamentais da República Federativa do Brasil:</p>
+<ul>
+<li>I - construir uma sociedade livre, justa e solidária;</li>
+<li>II - garantir o desenvolvimento nacional;</li>
+<li>III - erradicar a pobreza e a marginalização e reduzir as desigualdades sociais e regionais;</li>
+<li>IV - promover o bem de todos, sem preconceitos de origem, raça, sexo, cor, idade e quaisquer outras formas de discriminação.</li>
+</ul>
+
+<p><strong>Art. 4º</strong> A República Federativa do Brasil rege-se nas suas relações internacionais pelos seguintes princípios:</p>
+<ul>
+<li>I - independência nacional;</li>
+<li>II - prevalência dos direitos humanos;</li>
+<li>III - autodeterminação dos povos;</li>
+<li>IV - não-intervenção;</li>
+<li>V - igualdade entre os Estados;</li>
+<li>VI - defesa da paz;</li>
+<li>VII - solução pacífica dos conflitos;</li>
+<li>VIII - repúdio ao terrorismo e ao racismo;</li>
+<li>IX - cooperação entre os povos para o progresso da humanidade;</li>
+<li>X - concessão de asilo político.</li>
+</ul>
+<p>Parágrafo único. A República Federativa do Brasil buscará a integração econômica, política, social e cultural dos povos da América Latina, visando à formação de uma comunidade latino-americana de nações.</p>
+
+<p style="text-align:center;"><strong>TÍTULO II</strong></p>
+<p style="text-align:center;"><strong>Dos Direitos e Garantias Fundamentais</strong></p>
+<p style="text-align:center;"><strong>CAPÍTULO I</strong></p>
+<p style="text-align:center;"><strong>DOS DIREITOS E DEVERES INDIVIDUAIS E COLETIVOS</strong></p>
+
+<p><strong>Art. 5º</strong> Todos são iguais perante a lei, sem distinção de qualquer natureza, garantindo-se aos brasileiros e aos estrangeiros residentes no País a inviolabilidade do direito à vida, à liberdade, à igualdade, à segurança e à propriedade, nos termos seguintes:</p>
+<ul>
+<li>I - homens e mulheres são iguais em direitos e obrigações, nos termos desta Constituição;</li>
+<li>II - ninguém será obrigado a fazer ou deixar de fazer alguma coisa senão em virtude de lei;</li>
+<li>III - ninguém será submetido a tortura nem a tratamento desumano ou degradante;</li>
+<li>IV - é livre a manifestação do pensamento, sendo vedado o anonimato;</li>
+<li>V - é assegurado o direito de resposta, proporcional ao agravo, além da indenização por dano material, moral ou à imagem;</li>
+<li>VI - é inviolável a liberdade de consciência e de crença, sendo assegurado o livre exercício dos cultos religiosos e garantida, na forma da lei, a proteção aos locais de culto e a suas liturgias;</li>
+<li>VII - é assegurada, nos termos da lei, a prestação de assistência religiosa nas entidades civis e militares de internação coletiva;</li>
+<li>VIII - ninguém será privado de direitos por motivo de crença religiosa ou de convicção filosófica ou política, salvo se as invocar para eximir-se de obrigação legal a todos imposta e recusar-se a cumprir prestação alternativa, fixada em lei;</li>
+<li>IX - é livre a expressão da atividade intelectual, artística, científica e de comunicação, independentemente de censura ou licença;</li>
+<li>X - são invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas, assegurado o direito a indenização pelo dano material ou moral decorrente de sua violação;</li>
+<!-- ...segue os incisos e artigos do mesmo modo... -->
+</ul>
+
+<p>§ 1º As normas definidoras dos direitos e garantias fundamentais têm aplicação imediata.</p>
+<p>§ 2º Os direitos e garantias expressos nesta Constituição não excluem outros decorrentes do regime e dos princípios por ela adotados, ou dos tratados internacionais em que a República Federativa do Brasil seja parte.</p>
+<p>§ 3º Os tratados e convenções internacionais sobre direitos humanos que forem aprovados, em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros, serão equivalentes às emendas constitucionais.</p>
+<p>§ 4º O Brasil se submete à jurisdição de Tribunal Penal Internacional a cuja criação tenha manifestado adesão.</p>
+
+
+
+        `;
+
+        // ---- Dicionário de distratores (adicione conforme quiser) ----
+        const distratoresFixos = {
+            'fundamental': ['agora vai'],
+            '4': ['vida', 'vou'],
+            'liberdade': ['livramento', 'liberdade'],
+            'igualdade': ['equidade', 'igualdade'],
+            'segurança': ['certeza', 'segurança'],
+            '1': ['o direito', 'a cidadania'],
+ 			'2': ['natureza', 'fundamental'],
+            '3': ['agora vai', 'fundamental'],
+            
+          
+        };
+
+        // ---- Função para gerar distrator automático (simples) ----
+        function gerarDistrator(correta) {
+            const m = correta.toLowerCase().trim();
+            if (distratoresFixos[m]) {
+                // pega o distrator que NÃO é a correta
+                return distratoresFixos[m].find(op => op !== correta) || (correta + 'a');
+            }
+            // Distratores genéricos:
+            if (/\d+/.test(correta)) { // se tem número
+                return correta.replace(/(\d+)/, n => String(Number(n)+1));
+            }
+            if (/abert[oa]/i.test(correta)) return correta.replace(/abert[oa]/i, 'fechado');
+            if (/fechad[oa]/i.test(correta)) return correta.replace(/fechad[oa]/i, 'aberta');
+            if (/sim/i.test(correta)) return correta.replace(/sim/i, 'não');
+            if (/não/i.test(correta)) return correta.replace(/não/i, 'sim');
+            if (/restrita/i.test(correta)) return 'ampla';
+            if (/ampla/i.test(correta)) return 'restrita';
+            if (/origem/i.test(correta)) return 'natureza';
+            // Por padrão, faz uma pequena alteração
+            return correta + 'a';
+        }
+
+        // ---- Monta HTML com dropdowns ----
+        function montarHTML(texto) {
+    return texto.replace(/\[\[([^\[#\]]+)(?:#(\d+))?\]\]/g, function(match, correta, id) {
+        // Se houver id, usa o distrator pelo id; senão, usa pelo texto correto
+        let distrator, corretaFinal;
+        if (id && distratoresFixos[id]) {
+            // Embaralha opções
+            let opcoes = [distratoresFixos[id][0], distratoresFixos[id][1]];
+            opcoes = opcoes.sort(() => Math.random() - 0.5);
+            corretaFinal = distratoresFixos[id][1]; // sempre segunda é correta!
+            // ID único para select
+            const dropdownID = 'drop_' + Math.random().toString(36).substring(2, 10);
+            return `<select class="dropdown-lei" data-correta="${corretaFinal}" id="${dropdownID}">
+                    <option value="">Selecione...</option>
+                    <option value="${opcoes[0]}">${opcoes[0]}</option>
+                    <option value="${opcoes[1]}">${opcoes[1]}</option>
+                </select>`;
+        } else {
+            // Fallback: não tem id, faz igual antes (opcional)
+            corretaFinal = correta.trim();
+            let distratorAuto = corretaFinal + 'a';
+            let opcoes = [corretaFinal, distratorAuto].sort(() => Math.random() - 0.5);
+            const dropdownID = 'drop_' + Math.random().toString(36).substring(2, 10);
+            return `<select class="dropdown-lei" data-correta="${corretaFinal}" id="${dropdownID}">
+                    <option value="">Selecione...</option>
+                    <option value="${opcoes[0]}">${opcoes[0]}</option>
+                    <option value="${opcoes[1]}">${opcoes[1]}</option>
+                </select>`;
+        }
+    });
+}
+        // ---- Insere HTML processado no container ----
+        document.getElementById('lei-content').innerHTML = montarHTML(textoOriginal);
+
+
+        // ---- Adiciona o event listener para todos os selects ----
+        document.querySelectorAll('.dropdown-lei').forEach(function(sel) {
+            sel.addEventListener('change', function() {
+                // Remove classes anteriores
+                this.classList.remove('correta', 'incorreta');
+                const valor = this.value;
+                const correta = this.getAttribute('data-correta');
+                if (valor === '') {
+                    // Nada selecionado
+                    return;
+                }
+                if (valor === correta) {
+                    this.classList.add('correta');
+                } else {
+                    this.classList.add('incorreta');
+                }
+            });
+        });
+    
+    
+       
+    
+    </script>
+</body>
+</html>
